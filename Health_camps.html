@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Camps - MedAnalyzer</title>
+  <link rel="stylesheet" href="Health_camps.css">
+
+</head>
+<body>
+  <h2>Upcoming Health Camps</h2>
+
+  <div class="camps-container">
+    <!-- Camp 1 -->
+    <div class="camp-card">
+      <h3>Women & Child Health Camp</h3>
+      <span class="badge open">Open for Registration</span>
+      <div class="info">
+        <span>📍 Bangalore, Whitefield (<a href="#" onclick="openMaps('Bangalore Whitefield')">8.1 km</a>)</span>
+        <span>🏫 Government Primary School, Whitefield</span>
+        <span>📅 Saturday, January 18, 2025</span>
+        <span>🕒 09:30 AM - 02:30 PM</span>
+        <span>📞 +91-9876543212</span>
+      </div>
+      <div class="services">
+        <strong>Available Services:</strong><br>
+        <span class="service-tag">Maternal Health</span>
+        <span class="service-tag">Child Vaccination</span>
+        <span class="service-tag">Nutrition Counseling</span>
+      </div>
+      <div class="capacity">
+        Capacity: <span id="cap1">23/100</span>
+        <div class="progress-bar">
+          <div class="progress" id="progress1" style="width:23%"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn register-btn" onclick="registerCamp('Women & Child Health Camp', 'cap1', 'progress1', 100)">Register</button>
+        <button class="btn directions-btn" onclick="openMaps('Bangalore Whitefield')">Directions</button>
+      </div>
+      <div class="organizer">Organized by Karnataka Health Department</div>
+    </div>
+
+    <!-- Camp 2 -->
+    <div class="camp-card">
+      <h3>Senior Citizens Health Camp</h3>
+      <span class="badge filling">Filling Fast</span>
+      <div class="info">
+        <span>📍 Chennai, T Nagar (<a href="#" onclick="openMaps('Chennai T Nagar')">3.2 km</a>)</span>
+        <span>🏫 Corporation Community Hall, T Nagar</span>
+        <span>📅 Monday, January 20, 2025</span>
+        <span>🕒 08:00 AM - 01:00 PM</span>
+        <span>📞 +91-9876543213</span>
+      </div>
+      <div class="services">
+        <strong>Available Services:</strong><br>
+        <span class="service-tag">Geriatric Care</span>
+        <span class="service-tag">Blood Pressure</span>
+        <span class="service-tag">Joint Health</span>
+      </div>
+      <div class="capacity">
+        Capacity: <span id="cap2">89/120</span>
+        <div class="progress-bar">
+          <div class="progress" id="progress2" style="width:74%"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn register-btn" onclick="registerCamp('Senior Citizens Health Camp', 'cap2', 'progress2', 120)">Register</button>
+        <button class="btn directions-btn" onclick="openMaps('Chennai T Nagar')">Directions</button>
+      </div>
+      <div class="organizer">Organized by Tamil Nadu Health Department</div>
+    </div>
+  </div>
+
+  <script>
+    // Function to register for a camp
+    function registerCamp(campName, capId, progressId, totalCapacity) {
+      let capElement = document.getElementById(capId);
+      let progressElement = document.getElementById(progressId);
+
+      let current = parseInt(capElement.innerText.split("/")[0]);
+      let total = totalCapacity;
+
+      if (current < total) {
+        current++;
+        capElement.innerText = `${current}/${total}`;
+        progressElement.style.width = `${(current/total)*100}%`;
+        alert("✅ Successfully registered for " + campName);
+      } else {
+        alert("⚠️ Sorry, capacity full for " + campName);
+      }
+    }
+
+    // Function to open Google Maps for directions
+    function openMaps(location) {
+      let mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
+      window.open(mapsUrl, "_blank");
+    }
+  </script>
+</body>
+</html>
