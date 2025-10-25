@@ -23,6 +23,8 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  
+  
 }
 
 .logo span {
@@ -195,4 +197,6 @@ img{
   font-size: 1em;
   color: #555;
 }
+
+
 
