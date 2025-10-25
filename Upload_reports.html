@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="upload_report.css">
+
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="logo">
+      MedAnalyzer
+    </div>
+    <div class="menu">
+      <a href="#">Dashboard</a>
+      <a href="upload_report.html" class="active">Upload Reports</a>
+      <a href="#">Analysis</a>
+      <a href="Health_camps.html">Health Camps</a>
+      <a href="#">Appointments</a>
+    </div>
+    <div class="right">
+      <span>👤 aayush.gupta.tech@gmail.com</span>
+      <button class="signout-btn">⏻ Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h2>Upload Medical Reports</h2>
+    <p>Upload your MRI, CT scans, blood reports for AI-powered analysis</p>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="upload-section">
+    <h3>Report Upload</h3>
+    <p>Select your report type and upload the file for analysis</p>
+
+    <label for="report-type">Report Type</label>
+    <select id="report-type">
+      <option>Select report type</option>
+      <option>Blood Report</option>
+      <option>MRI Scan</option>
+      <option>CT Scan</option>
+      <option>X-Ray</option>
+    </select>
+
+    <label>Upload File</label>
+    <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+      <img src="https://cdn-icons-png.flaticon.com/512/109/109612.png" alt="upload">
+      <p><b>Drop your file here or click to browse</b></p>
+      <p>PDF, JPEG, PNG, DICOM files supported<br>Maximum file size: 50MB</p>
+      <button class="browse-btn" type="button">Browse Files</button>
+    </div>
+
+    <!-- Hidden file input -->
+    <input type="file" id="fileInput" style="display: none;">
+
+    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Upload and Analyze</button>
+
+    <!-- Guidelines -->
+    <div class="guidelines">
+      <h4>Upload Guidelines:</h4>
+      <ul>
+        <li>Ensure images are clear and readable</li>
+        <li>For DICOM files, upload the original format when possible</li>
+        <li>Blood reports should be in PDF format for best results</li>
+        <li>Remove any personal information if privacy is a concern</li>
+        <li>Multiple files? Upload them one at a time for individual analysis</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Show selected file name
+    const fileInput = document.getElementById("fileInput");
+    fileInput.addEventListener("change", function() {
+      if (fileInput.files.length > 0) {
+        alert("File selected: " + fileInput.files[0].name);
+      }
+    });
+  </script>
+
+
+</body>
+</html>
