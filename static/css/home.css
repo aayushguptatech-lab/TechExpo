@@ -1,0 +1,189 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+  margin: 0;
+  padding-top: 30px; /* space for top-bar + navbar */
+}
+.chatbot_icon{
+  position: fixed;          /* stays fixed even when scrolling */
+    bottom: 20px;             /* space from bottom */
+    right: 20px;              /* space from right */
+    width: 90px;              /* adjust size */
+    height: 90px;
+    cursor: pointer;          /* pointer cursor on hover */
+    border-radius: 50%;       /* optional: makes circular */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* shadow for depth */
+    transition: transform 0.3s ease;
+    z-index: 9999; 
+}
+.chatbot_icon:hover {
+    transform: scale(1.1);    /* hover effect */
+}
+
+.top-bar {
+  position: fixed;
+  margin-right: 25px;
+  top: 0;
+  width: 100%;
+  background:linear-gradient(90deg, #052b68, #0b3c91);
+  color: #fff;
+  
+  justify-content: space-between;
+  z-index: 1100; 
+  border-bottom: 1px solid #ccc;
+}
+
+
+#Nav-bar{
+    position: fixed;
+    background-color: rgb(252, 250, 250);
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 40px;
+    color: black;
+     z-index: 1000; /* ensures it stays above everything else */
+    
+}
+
+
+#Nav-bar a {
+  text-decoration: none;
+  color: black;               /* default link color */
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* --- Fix the purple/blue visited color issue --- */
+#Nav-bar a:visited {
+  color: black;
+}
+
+
+
+
+.nav{
+    transition: 10s;
+}
+.nav:hover{
+    transform: scale(1.05);
+}
+
+.Nav-bar .login_button{
+  transition: 10s;
+  color: white;
+  font-style: bold;
+}
+.login_button:hover{
+  transform: scale(1.05);
+}
+
+#logo-img{
+    display: flex;
+    height: 100%;
+    width: 10%;
+    justify-content: right;
+    align-items: center;
+    border-right: 2px;
+}
+#logo{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 20em;
+}
+
+
+
+#footer {
+  background-image: url("../images/new_image_2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 40px 0;
+}
+
+
+
+.footer-main {
+  margin-top: 20px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h3 {
+  color: rgb(0, 0, 0);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5px;
+}
+
+.footer-col a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+
+
+
+.footer-bottom {
+  background: linear-gradient(90deg, #052b68, #0b3c91);
+  color: #fff;
+  padding: 20px 40px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 2;
+  min-width: 300px;
+}
+
+.footer-right {
+  flex: 1;
+  text-align: right;
+  min-width: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-right {
+    text-align: center;
+    margin-top: 15px;
+  }
+}
