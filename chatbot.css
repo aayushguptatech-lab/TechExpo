@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+
+
+    body {
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+
+
+
+
+
+    
+.top-bar {
+  position: fixed;
+  margin-right: 35px;
+  margin-left: 32px;
+  top: 0;
+  width: 100%;
+  background:linear-gradient(90deg, #052b68, #0b3c91);
+  color: #fff;
+  
+  justify-content: space-between;
+  z-index: 1100; 
+  border-bottom: 1px solid #ccc;
+}
+
+
+#Nav-bar{
+  top: 20px;
+    position: fixed;
+    background-color: rgb(252, 250, 250);
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 40px;
+    color: black;
+     z-index: 1000; /* ensures it stays above everything else */
+    
+}
+
+
+#Nav-bar a {
+  text-decoration: none;
+  color: black;               /* default link color */
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* --- Fix the purple/blue visited color issue --- */
+#Nav-bar a:visited {
+  color: black;
+}
+
+
+
+
+.nav{
+    transition: 10s;
+}
+.nav:hover{
+    transform: scale(1.05);
+}
+
+.Nav-bar .login_button{
+  transition: 10s;
+  color: white;
+  font-style: bold;
+}
+.login_button:hover{
+  transform: scale(1.05);
+}
+
+#logo-img{
+    display: flex;
+    height: 100%;
+    width: 10%;
+    justify-content: right;
+    align-items: center;
+    border-right: 2px;
+}
+#logo{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 20em;
+}
+
+
+
+
+
+
+
+
+
+
+
+    /* ---------- Chat Container ---------- */
+    .chat-container {
+      margin-top: 100px;
+      margin-bottom: 20px;
+      top: 100px;
+      background: #ffffff;
+      width: 400px;
+      height: 600px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ---------- Header ---------- */
+    .chat-header {
+      background: #4e54c8;
+      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2em;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- Chat Area ---------- */
+    .chat-box {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scroll-behavior: smooth;
+      background-color: #f5f7fa;
+    }
+
+    /* Scrollbar styling */
+    .chat-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    .chat-box::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 10px;
+    }
+
+    /* ---------- Messages ---------- */
+    .message {
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .user-message {
+      background: #4e54c8;
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 5px;
+    }
+
+    .bot-message {
+      background: #e5e5ea;
+      color: #333;
+      align-self: flex-start;
+      border-bottom-left-radius: 5px;
+    }
+
+    /* ---------- Input Area ---------- */
+    .input-area {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      background: #f1f1f1;
+      outline: none;
+      font-size: 0.9em;
+    }
+
+    .input-area button {
+      background: #4e54c8;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .input-area button:hover {
+      background: #3b3fa1;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 450px) {
+      .chat-container {
+        width: 95%;
+        height: 90vh;
+      }
+    }
+
+
+
+
+
+
+
