@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevaKendra - Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    
+<div class="container">
+    <span class="close-btn">&times;</span>
+    <h2>Create a SevaKendra Account</h2>
+    <p>Sign up to manage your appointments and reports</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <a href="{{ url_for('login') }}"><button type="button">Sign In</button></a>
+      <button class="active">Sign Up</button>
+    </div>
+
+    <!-- Registration Form -->
+    <form method="POST" action="{{ url_for('register') }}">
+        <!-- Username -->
+        <label>Username</label>
+        <div class="input-group" style="margin-right:90px;">
+          <span class="icon">👤</span>
+          <input type="text" name="username" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Email -->
+        <label>Email</label>
+        <div class="input-group" style="margin-right:90px;">
+          <span class="icon">📧</span>
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Password -->
+        <label>Password</label>
+        <div class="input-group" style="margin-right:90px;">
+          <span class="icon">🔒</span>
+          <input type="password" name="password" placeholder="Create your password" required>
+          <span class="toggle">👁</span>
+        </div>
+
+        <!-- Sign Up Button -->
+        <button class="btn" type="submit">Sign Up</button>
+    </form>
+  </div>
+
+</body>
+</html>

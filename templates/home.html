@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <div class="top-bar">
+        <span>Skip to Main Content | Screen Reader Access</span>
+        <span style="float:right;">English | हिंदी</span>
+    </div>
+    <div id="Nav-bar">
+        <div id="logo-img"><img src="{{url_for('static', filename='images/icon.png')}}" alt="" height="80%"></div>
+        <div id="logo"> <h2 style="font-style: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 2px;">SevaKendra</h2></div>
+            <div class="nav"><h3><a style="text-decoration: none;" href="">Dashboard</a></h3></div>
+            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('upload_report') }}">Report Analysis</a></h3></div>
+            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('schemes') }}">Government Schemes</a></h3></div>
+            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('health_camps') }}">Health Camps</a></h3></div>
+            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('login') }}">Login</a></h3></div>
+        
+        <div class="login_button" style="padding-left: 90px;"><button style="height: 35px; width: 60px; background-color: rgb(246, 97, 97); font-style: bold; color: white; border-radius: 10px;"><a style="text-decoration: none; color: white;" href="{{ url_for('login') }}">Login</a></button></div>
+    </div>
+    <!-- <div class="container">
+        <div class="wrapper">
+            <div class="wrapper-holder">
+                <div id="slider-img-1"><img src="C:\Users\ASUS\Desktop\sevakendra\static\images\Fingerprint.png" alt=""></div>
+                <div id="slider-img-2"></div>
+                <div id="slider-img-3"></div>
+                <div id="slider-img-4"></div>
+            </div>
+        </div>
+        <div class="button-holder">
+            <a href="#slider-img-1" class="button"></a>
+            <a href="#slider-img-2" class="button"></a>
+            <a href="#slider-img-3" class="button"></a>
+            <a href="#slider-img-4" class="button"></a>
+        </div>
+    </div> -->
+    <div style="width: 100%;">
+        <img style="width: 100vw; height: 600px; opacity: 0.9;" src="https://fs.tour.ne.jp/index.php/file_manage/view/?contents_code=spot&file_name=world/IN/1317816/Rashtrapati-Bhavan_1.jpg&w=800" alt="" class="slide" />
+         <img style="width: 100vw; height: 600px; opacity: 0.9;" src="https://uidai.gov.in/images/banner/Bhuvan-APP_-banner.jpg"class="slide" />
+    </div>
+
+    <div class="chatbot_icon">
+        <a href="{{ url_for('chatbot') }}">
+          <img src="{{ url_for('static', filename='images/ChatBot-PNG-Picture.png') }}" alt="Chatbot Icon" height="90px">
+        </a>
+    </div>
+
+<div class="footer">
+    <div class="footer-main">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Category</h3>
+          <a href="#">Agriculture, Rural & Environment</a>
+          <a href="#">Benefits & Social Development</a>
+          <a href="#">Business & Self-employed</a>
+          <a href="#">Citizenship, Visa & Passports</a>
+          <a href="#">Defence & Foreign Affairs</a>
+          <a href="#">Housing & Local Services</a>
+          <a href="#">Infrastructure & Industries</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>My Government</h3>
+          <a href="#">Acts & Rules</a>
+          <a href="#">Schemes</a>
+          <a href="#">Constitution of India</a>
+          <a href="#">Documents</a>
+          <h3>Directory</h3>
+          <a href="#">Who's Who</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore India</h3>
+          <a href="#">Travel & Tourism</a>
+          <a href="#">Culinary Delights</a>
+          <a href="#">One District One Product</a>
+          <a href="#">Facts of India</a>
+          <h3>News Hub</h3>
+          <a href="#">Services</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <a href="#">Contact Us</a>
+          <a href="#">Feedback</a>
+          <a href="#">FAQs</a>
+          <a href="#">Help</a>
+          <a href="#">Link to Us</a>
+          <h3>Calendar</h3>
+          <a href="#">Spotlights</a>
+          <a href="#">Visitor Summary</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+  <div class="footer-bottom-content">
+    <div class="footer-left">
+      <p>Copyright © 2025 Unique Identification Authority of India | All Rights Reserved</p>
+      <p>JavaScript must be enabled to access this site.</p>
+      <p>Supports : Firefox 37+ | Google Chrome 6.0+ | Internet Explorer 9.0+ | Safari 4.0+</p>
+      <p>UIDAI website translation is done by Bhashini Machine Translation. This is done on experimental basis and will be improved over a period of time. Kindly ignore the errors if any.</p>
+    </div>
+    <div class="footer-right">
+      <p>Last reviewed and updated on: October 31, 2025</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

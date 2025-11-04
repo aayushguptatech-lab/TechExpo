@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government-Schemes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/schemes.css') }}">
+</head>
+<body>
+    <h2> Explore Government Schemes </h2>
+
+  
+  <div class="button-container">
+    <!-- ✨ Changed: Unified toggle logic -->
+    <button class="scheme-button" onclick="showCentralSchemes()">Central Government Schemes</button>
+    <button class="scheme-button" onclick="showStateSchemes()">State Government Schemes</button>
+  </div>
+
+  <!-- 🔧 Added class for shared styling -->
+  <div id="central-schemes" class="scheme-section">
+    <h2>Central Scheme Categories</h2>
+    <div class="category">🩺 Health Schemes</div>
+    <div class="category">⚡ Electricity Schemes</div>
+    <div class="category">📚 Education Schemes</div>
+    <div class="category">🏠 Housing Schemes</div>
+    <div class="category">💼 Employment Schemes</div>
+  </div>
+
+  <div id="state-schemes" class="scheme-section">
+    <h2>State Scheme Categories</h2>
+    <div class="category">🩺 Health Schemes</div>
+    <div class="category">⚡ Electricity Schemes</div>
+    <div class="category">📚 Education Schemes</div>
+    <div class="category">🏠 Housing Schemes</div>
+    <div class="category">💼 Employment Schemes</div>
+  </div>
+
+  <script>
+    // 🔧 Added: Toggle logic to show one section at a time
+    function showCentralSchemes() {
+      document.getElementById("central-schemes").style.display = "block";
+      document.getElementById("state-schemes").style.display = "none";
+    }
+
+    function showStateSchemes() {
+      document.getElementById("state-schemes").style.display = "block";
+      document.getElementById("central-schemes").style.display = "none";
+    }
+  </script>
+  
+    
+</body>
+</html>
