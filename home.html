@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevaKendra-Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo">
+        <div id="Logo_img" style="background-color: white;height: 40px; border-radius: 13px;">
+            <img src="icon.png" alt="logo" height="40px" style="background-color: white;"> 
+        </div>
+      <span>SevaKendra</span>
+    </div>
+    <ul class="nav-links">
+
+      <li><a href="Login.html">Dashboard</a></li>
+      <li><a href="upload_report.html">Upload Reports</a></li>
+      <li><a href="Health_camps.html">Health Camps</a></li>
+      <li><a href="schemes.html">Government Schemes</a></li>
+      <li><a href="Login.html">Sign In</a></li>
+
+
+    </ul>
+    <a href="{{ url_for('login') }}">
+    <button class="signin-btn">Sign In</button>
+    </a>
+  </nav>
+
+    <div id="div1">
+        <h1 id="title">AI - Powered Medical Analysis & Government Health Services</h1>
+        <pre style="text-align: center; padding-top: 10px; font-size: 15px; font-family:'Times New Roman', Times, serif; line-height: 20px;">Upload your Medical reports for instant analysis and connect with govenment Health
+services including camps and hospital appointments
+        </pre>
+    </div>
+
+    <div id="box1">
+        <h1 style="color: white;background-color: black; text-align: center;font-family: Arial, Helvetica, sans-serif;">Advanced Healthcare Solution</h1>
+        
+        <a href="Login.html" style="background-color: black;" style="display:flex; justify-content: center; ">
+            <button id="button" style="justify-content: center; ">Get Started</button>
+        </a>
+    </div>
+    <div class="container">
+        <div class="box" style="margin-right: 10px;"> 
+            <img src="images/image-removebg-preview.png" alt="" height="100px">
+            <h2 style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; font-family: Arial, Helvetica, sans-serif;">Medical Report Analysis</h2>
+            <pre style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; padding-top: 5px; font-family: Arial, Helvetica, sans-serif;">Upload and analyze MRI scans, CT scans, and blood reports 
+with AI-powered insights</pre>
+            <a href="upload_report.html">
+            <button style="background-color: rgb(0, 0, 0); height: 50px; width: 50%; margin-left: 22%; margin-right: 35%; margin-top: 10px; border-radius: 10px; color: white;">GET STARTED</button>
+            </a>
+          </div>
+
+        <div class="box" style="margin-right: 10px;"> 
+            <img src="images/location.png" alt="" height="60px" style="margin-top: 20px; margin-left: 20px; margin-bottom: 17px;">
+            
+            <h2 style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; font-family: Arial, Helvetica, sans-serif;">Government Health Camps</h2>
+            
+            <pre style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; padding-top: 5px; font-family: Arial, Helvetica, sans-serif;">Find nearby govenment health camps and free medical 
+services</pre>
+            <a href="Health_camps.html">
+            <button style="background-color: rgb(0, 0, 0); height: 50px; width: 50%; margin-left: 22%; margin-right: 35%; margin-top: 10px; border-radius: 10px; color: white;">GET STARTED</button>
+            </a>
+          </div>
+
+        <div class="box" style="margin-right: 10px;">
+            <img src="images/calender.png" alt="" height="60px" style="margin-top: 20px; margin-left: 20px; margin-bottom: 17px;">
+            
+            <h2 style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; font-family: Arial, Helvetica, sans-serif;">Hospital Appointments</h2>
+            
+            <pre style="background-color: wheat; padding-top:0 ; padding-left: 25px; margin-top: 0; padding-top: 5px; font-family: Arial, Helvetica, sans-serif;">Book appointments at government hospitals and healthcare
+facilities</pre>
+
+            <button style="background-color: rgb(0, 0, 0); height: 50px; width: 50%; margin-left: 22%; margin-right: 35%; margin-top: 10px; border-radius: 10px; color: white;">GET STARTED</button>
+        </div>
+    </div>
+
+
+    <section class="how-it-works">
+    <h1>How It Works</h1>
+    <p class="subtitle">Simple steps to get your medical analysis and health services</p>
+    <div class="steps">
+      <div class="step">
+        <div class="icon">⬆️</div>
+        <h2>Upload Reports</h2>
+        <p>Upload your MRI, CT scans or blood reports securely.</p>
+      </div>
+      <div class="step">
+        <div class="icon">📊</div>
+        <h2>AI Analysis</h2>
+        <p>Get instant AI-powered analysis and insights.</p>
+      </div>
+      <div class="step">
+        <div class="icon">📅</div>
+        <h2>Book Services</h2>
+        <p>Find health camps and book hospital appointments.</p>
+      </div>
+    </div>
+  </section>
+
+
+</html>

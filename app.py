@@ -4,12 +4,20 @@ import requests
 from flask import Flask, render_template, request, url_for, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from PyPDF2 import PdfReader
+from Utils.Agent import Cardiologist, Psychologist, Pulmonologist, MultidisciplinaryTeam
+
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # needed for session
 
+UPLOAD_FOLDER = 'uploads'
+RESULT_PATH = 'results/final_diagnosis.txt'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(os.path.dirname(RESULT_PATH), exist_ok=True)
 
-# LOGIN CHECK DECORATOR
+# ---------------- LOGIN SYSTEM ---------------- #
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -20,7 +28,6 @@ def login_required(f):
     return decorated_function
 
 
-# ROUTES 
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -33,17 +40,12 @@ def health_camps():
 def schemes():
     return render_template("government_schemes.html")
 
-@app.route("/upload_report")
-@login_required
-def upload_report():
-    return render_template("upload_report.html")
-
 @app.route("/chatbot")
 def chatbot():
     return render_template("chatbot.html")
 
 
-# REGISTER 
+# ---------------- LOGIN & REGISTER ---------------- #
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -71,7 +73,6 @@ def register():
     return render_template('register.html')
 
 
-# LOGIN
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -101,7 +102,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-# CHATBOT 
+# ---------------- CHATBOT ---------------- #
 @app.route("/get", methods=["POST"])
 def chat():
     msg = request.form.get("msg")
@@ -122,5 +123,61 @@ def get_chat_response(text):
         return f"Error {response.status_code}: {response.text}"
 
 
+# ---------------- REPORT UPLOAD (merged) ---------------- #
+@app.route("/upload_report", methods=['GET', 'POST'])
+@login_required
+def upload_report():
+    if request.method == 'POST':
+        file = request.files['report']
+        if file:
+            filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+            file.save(filepath)
+
+            medical_report = ""
+            if file.filename.endswith('.txt'):
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    medical_report = f.read()
+            elif file.filename.endswith('.pdf'):
+                reader = PdfReader(filepath)
+                for page in reader.pages:
+                    text = page.extract_text()
+                    if text:
+                        medical_report += text
+            else:
+                return render_template("upload_report.html", error="Please upload a .txt or .pdf file.")
+
+            # Run specialist agents
+            agents = {
+                "Cardiologist": Cardiologist(medical_report),
+                "Psychologist": Psychologist(medical_report),
+                "Pulmonologist": Pulmonologist(medical_report)
+            }
+
+            responses = {}
+            with ThreadPoolExecutor() as executor:
+                futures = {executor.submit(agent.run): name for name, agent in agents.items()}
+                for future in as_completed(futures):
+                    agent_name = futures[future]
+                    responses[agent_name] = future.result()
+
+            # Team diagnosis
+            team_agent = MultidisciplinaryTeam(
+                cardiologist_report=responses["Cardiologist"],
+                psychologist_report=responses["Psychologist"],
+                pulmonologist_report=responses["Pulmonologist"]
+            )
+            final_diagnosis = team_agent.run()
+            print("Team agent output:", final_diagnosis)
+
+            final_diagnosis_text = "### Final Diagnosis:\n\n" + str(final_diagnosis or "No diagnosis generated.")
+            with open(RESULT_PATH, 'w') as result_file:
+                result_file.write(final_diagnosis_text)
+
+            return render_template("upload_report.html", diagnosis=final_diagnosis_text)
+
+    return render_template("upload_report.html")
+
+
+# ---------------- RUN APP ---------------- #
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
