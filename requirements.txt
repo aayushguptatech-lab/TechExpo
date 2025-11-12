@@ -14,6 +14,7 @@ langchain-core
 langchain-community
 langchain-text-splitters
 langchain-openai
+langchain-groq
 faiss-cpu
 
 # Optional (for LLM API integration)
@@ -33,3 +34,4 @@ aiohttp
 
 # For serving CORS requests (useful for frontend integration)
 flask-cors
+
