@@ -1,4 +1,35 @@
+# Web Framework
 Flask
 gunicorn
-PyPDF2
+
+# HTTP Requests
 requests
+
+# PDF Processing
+PyPDF2
+
+# LangChain & AI Stack
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-openai
+faiss-cpu
+
+# Optional (for LLM API integration)
+tiktoken
+openai
+
+# Utilities
+python-dotenv
+pandas
+numpy
+
+# If using Google Generative AI (Gemini)
+google-generativeai
+
+# For async/streaming APIs
+aiohttp
+
+# For serving CORS requests (useful for frontend integration)
+flask-cors
