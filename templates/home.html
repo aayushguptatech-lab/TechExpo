@@ -1,116 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SevaKendra | Empowering Citizens</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <style>
+    /* === General Page Setup === */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* === Top Bar === */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background-color: #0b3d91;
+  color: #fff;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* === Navbar === */
+#Nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 8px 20px;
+  position: sticky;
+  top: 38px; /* Equal to top-bar height */
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+
+
+    #logo-img img {
+      height: 60px;
+      margin-right: 10px;
+    }
+
+    #logo h2 {
+      color: #0b3d91;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .nav {
+      margin-left: 40px;
+      position: relative;
+    }
+
+    .nav a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -3px;
+      background-color: #0b3d91;
+      transition: width 0.3s;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav a:hover {
+      color: #0b3d91;
+    }
+
+    .login_button button {
+      height: 35px;
+      width: 80px;
+      background-color: #d9534f;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .login_button button:hover {
+      background-color: #b52b27;
+      transform: scale(1.05);
+    }
+
+    /* === Hero Slider === */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .slide {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      animation: fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === Chatbot Icon === */
+    .chatbot_icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* === Footer === */
+    /* === Footer === */
+.footer {
+  background: linear-gradient(135deg, #1a2a6c, #2b5876);
+  color: #f9f9f9;
+  padding: 50px 20px 20px;
+  animation: fadeIn 2s ease;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.footer-col h3 {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-col a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  margin: 6px 0;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: #ffd700;
+}
+
+.footer-bottom {
+  background: #152043;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #ccc;
+}
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .slider, .slide { height: 400px; }
+      .slide-caption { font-size: 14px; padding: 15px; }
+      .nav { margin-left: 15px; }
+      .login_button { padding-left: 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-bar">
-        <span>Skip to Main Content | Screen Reader Access</span>
-        <span style="float:right;">English | हिंदी</span>
+
+  <div class="top-bar">
+    <span>Skip to Main Content | Screen Reader Access</span>
+    <span>English | हिंदी</span>
+  </div>
+
+
+  <div id="Nav-bar">
+    <div id="logo-img"><img src="{{url_for('static', filename='images/icon.png')}}" alt="SevaKendra Logo"></div>
+    <div id="logo"><h2>SevaKendra</h2></div>
+
+    <div class="nav"><h3><a href="">Dashboard</a></h3></div>
+    <div class="nav"><h3><a href="{{ url_for('upload_report') }}">Report Analysis</a></h3></div>
+    <div class="nav"><h3><a href="{{ url_for('schemes') }}">Government Schemes</a></h3></div>
+    <div class="nav"><h3><a href="{{ url_for('health_camps') }}">Health Camps</a></h3></div>
+    <div class="nav"><h3><a href="{{ url_for('login') }}">Login</a></h3></div>
+
+    <div class="login_button">
+      <button><a style="text-decoration: none; color: white;" href="{{ url_for('login') }}">Login</a></button>
     </div>
-    <div id="Nav-bar">
-        <div id="logo-img"><img src="{{url_for('static', filename='images/icon.png')}}" alt="" height="80%"></div>
-        <div id="logo"> <h2 style="font-style: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left: 2px;">SevaKendra</h2></div>
-            <div class="nav"><h3><a style="text-decoration: none;" href="">Dashboard</a></h3></div>
-            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('upload_report') }}">Report Analysis</a></h3></div>
-            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('schemes') }}">Government Schemes</a></h3></div>
-            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('health_camps') }}">Health Camps</a></h3></div>
-            <div class="nav"><h3><a style="text-decoration: none;" href="{{ url_for('login') }}">Login</a></h3></div>
-        
-        <div class="login_button" style="padding-left: 90px;"><button style="height: 35px; width: 60px; background-color: rgb(246, 97, 97); font-style: bold; color: white; border-radius: 10px;"><a style="text-decoration: none; color: white;" href="{{ url_for('login') }}">Login</a></button></div>
+  </div>
+
+  <!-- === Hero Section with Dynamic Slider === -->
+  <div class="slider">
+    <img class="slide active" src="https://fs.tour.ne.jp/index.php/file_manage/view/?contents_code=spot&file_name=world/IN/1317816/Rashtrapati-Bhavan_1.jpg&w=800" alt="Rashtrapati Bhavan">
+    <img class="slide" src="https://cdn.digitalindiacorporation.in/wp-content/uploads/2025/11/DI-Website-Banner.jpg" alt="Digital India">
+    <img class="slide" src="https://cdn.digitalindiacorporation.in/wp-content/uploads/2025/10/YUVAi_1080-X-518.png" alt="Digital India">
+    
+    <img class="slide" src="https://uidai.gov.in/images/banner/Bhuvan-APP_-banner.jpg" alt="Digital India">
+    <img class="slide" src="static\images\health_camps_images.webp" alt="MyGov India">
+    <img class="slide" src="https://cdn.digitalindiacorporation.in/wp-content/uploads/2025/11/DI-Web-Banner.jpg" alt="MyGov India">
+    <img class="slide" src="https://cdn.digitalindiacorporation.in/wp-content/uploads/2025/10/DIc-web-copy-1.jpg" height="500px" ="Digital India">
+
+    
+    <div class="slide-caption">
+      <h2>Empowering Every Citizen</h2>
+      <p>SevaKendra helps you access verified government schemes with ease and transparency.</p>
     </div>
-    <!-- <div class="container">
-        <div class="wrapper">
-            <div class="wrapper-holder">
-                <div id="slider-img-1"><img src="C:\Users\ASUS\Desktop\sevakendra\static\images\Fingerprint.png" alt=""></div>
-                <div id="slider-img-2"></div>
-                <div id="slider-img-3"></div>
-                <div id="slider-img-4"></div>
-            </div>
-        </div>
-        <div class="button-holder">
-            <a href="#slider-img-1" class="button"></a>
-            <a href="#slider-img-2" class="button"></a>
-            <a href="#slider-img-3" class="button"></a>
-            <a href="#slider-img-4" class="button"></a>
-        </div>
-    </div> -->
-    <div style="width: 100%;">
-        <img style="width: 100vw; height: 600px; opacity: 0.9;" src="https://fs.tour.ne.jp/index.php/file_manage/view/?contents_code=spot&file_name=world/IN/1317816/Rashtrapati-Bhavan_1.jpg&w=800" alt="" class="slide" />
-         <img style="width: 100vw; height: 600px; opacity: 0.9;" src="https://uidai.gov.in/images/banner/Bhuvan-APP_-banner.jpg"class="slide" />
-    </div>
+  </div>
 
-    <div class="chatbot_icon">
-        <a href="{{ url_for('chatbot') }}">
-          <img src="{{ url_for('static', filename='images/ChatBot-PNG-Picture.png') }}" alt="Chatbot Icon" height="90px">
-        </a>
-    </div>
+  <!-- === Chatbot Icon === -->
+  <div class="chatbot_icon">
+    <a href="{{ url_for('chatbot') }}">
+      <img src="{{ url_for('static', filename='images/ChatBot-PNG-Picture.png') }}" alt="Chatbot Icon" height="80">
+    </a>
+  </div>
 
-<div class="footer">
-    <div class="footer-main">
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h3>Category</h3>
-          <a href="#">Agriculture, Rural & Environment</a>
-          <a href="#">Benefits & Social Development</a>
-          <a href="#">Business & Self-employed</a>
-          <a href="#">Citizenship, Visa & Passports</a>
-          <a href="#">Defence & Foreign Affairs</a>
-          <a href="#">Housing & Local Services</a>
-          <a href="#">Infrastructure & Industries</a>
-        </div>
+  <!-- === Footer === -->
+  <div class="footer">
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h3>Category</h3>
+        <a href="#">Agriculture, Rural & Environment</a>
+        <a href="#">Benefits & Social Development</a>
+        <a href="#">Business & Self-employed</a>
+        <a href="#">Citizenship, Visa & Passports</a>
+        <a href="#">Defence & Foreign Affairs</a>
+        <a href="#">Housing & Local Services</a>
+        <a href="#">Infrastructure & Industries</a>
+      </div>
 
-        <div class="footer-col">
-          <h3>My Government</h3>
-          <a href="#">Acts & Rules</a>
-          <a href="#">Schemes</a>
-          <a href="#">Constitution of India</a>
-          <a href="#">Documents</a>
-          <h3>Directory</h3>
-          <a href="#">Who's Who</a>
-          <a href="#">Contact</a>
-        </div>
+      <div class="footer-col">
+        <h3>My Government</h3>
+        <a href="#">Acts & Rules</a>
+        <a href="#">Schemes</a>
+        <a href="#">Constitution of India</a>
+        <a href="#">Documents</a>
+        <h3>Directory</h3>
+        <a href="#">Who's Who</a>
+        <a href="#">Contact</a>
+      </div>
 
-        <div class="footer-col">
-          <h3>Explore India</h3>
-          <a href="#">Travel & Tourism</a>
-          <a href="#">Culinary Delights</a>
-          <a href="#">One District One Product</a>
-          <a href="#">Facts of India</a>
-          <h3>News Hub</h3>
-          <a href="#">Services</a>
-        </div>
+      <div class="footer-col">
+        <h3>Explore India</h3>
+        <a href="#">Travel & Tourism</a>
+        <a href="#">Culinary Delights</a>
+        <a href="#">One District One Product</a>
+        <a href="#">Facts of India</a>
+        <h3>News Hub</h3>
+        <a href="#">Services</a>
+      </div>
 
-        <div class="footer-col">
-          <h3>About Us</h3>
-          <a href="#">Contact Us</a>
-          <a href="#">Feedback</a>
-          <a href="#">FAQs</a>
-          <a href="#">Help</a>
-          <a href="#">Link to Us</a>
-          <h3>Calendar</h3>
-          <a href="#">Spotlights</a>
-          <a href="#">Visitor Summary</a>
-        </div>
+      <div class="footer-col">
+        <h3>About Us</h3>
+        <a href="#">Contact Us</a>
+        <a href="#">Feedback</a>
+        <a href="#">FAQs</a>
+        <a href="#">Help</a>
+        <a href="#">Link to Us</a>
+        <h3>Calendar</h3>
+        <a href="#">Spotlights</a>
+        <a href="#">Visitor Summary</a>
       </div>
     </div>
   </div>
 
   <div class="footer-bottom">
-  <div class="footer-bottom-content">
-    <div class="footer-left">
-      <p>Copyright © 2025 Unique Identification Authority of India | All Rights Reserved</p>
-      <p>JavaScript must be enabled to access this site.</p>
-      <p>Supports : Firefox 37+ | Google Chrome 6.0+ | Internet Explorer 9.0+ | Safari 4.0+</p>
-      <p>UIDAI website translation is done by Bhashini Machine Translation. This is done on experimental basis and will be improved over a period of time. Kindly ignore the errors if any.</p>
+    <div>
+      <p>© 2025 SevaKendra | All Rights Reserved</p>
+      <p>Supports: Chrome | Firefox | Safari | Edge</p>
+      <p>Built under the initiative of Digital India</p>
     </div>
-    <div class="footer-right">
-      <p>Last reviewed and updated on: October 31, 2025</p>
+    <div>
+      <p>Last reviewed: November 21, 2025</p>
     </div>
   </div>
-</div>
+
+  <!-- === Slider Script === -->
+  <script>
+    let slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showNextSlide() {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 4000);
+  </script>
 </body>
 </html>
